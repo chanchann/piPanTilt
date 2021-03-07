@@ -17,9 +17,9 @@ set(CXX_FLAGS
  -Wall
  -Wextra
  -Werror
- -Wconversion
+#  -Wconversion
  -Wno-unused-parameter
- -Wold-style-cast
+#  -Wold-style-cast
  -Woverloaded-virtual
  -Wpointer-arith
  -Wshadow
@@ -49,12 +49,15 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 include_directories(${PROJECT_SOURCE_DIR}/3rdParty/wiringPi)
+include_directories( ${OpenCV_INCLUDE_DIRS}/src)
+
 link_directories(${PROJECT_SOURCE_DIR}/lib)
+
 
 string(TOUPPER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
 message(STATUS "CXX_FLAGS = " ${CMAKE_CXX_FLAGS} " " ${CMAKE_CXX_FLAGS_${BUILD_TYPE}})
 
-# add_subdirectory(${PROJECT_SOURCE_DIR}/src)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
 
 add_subdirectory(tests)
