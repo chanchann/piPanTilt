@@ -14,13 +14,12 @@ Stitcher::Mode mode = Stitcher::PANORAMA;
 // Array for pictures 
 vector<Mat> imgs; 
   
-int main(int argc, char* argv[]) 
-{ 
+int main(int argc, char* argv[]) { 
     // Get all the images that need to be  
     // stitched as arguments from command line  
     if(argc < 2) {
-        Mat img1 = imread("../03_left.jpg"); 
-        Mat img2 = imread("../03_right.jpg"); 
+        Mat img1 = imread("../left.jpg"); 
+        Mat img2 = imread("../right.jpg"); 
         imgs.push_back(img1);
         imgs.push_back(img2);
     }
@@ -53,10 +52,7 @@ int main(int argc, char* argv[])
     // Store a new image stiched from the given  
     //set of images as "result.jpg" 
     imwrite("result.jpg", pano); 
-      
     // Show the result 
     // imshow("Result", pano); 
-      
-
     return 0; 
 } 

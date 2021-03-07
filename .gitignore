@@ -54,7 +54,7 @@
 
 include/divisible/*
 bin/*
-lib/*
+# lib/*
 test/test_runner
 
 ## Local 
