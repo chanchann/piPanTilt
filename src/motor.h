@@ -23,6 +23,8 @@ public:
     void backward();
     void clean();
     void loop();
+    void round();
+    void loop1();
     void setMotorPin1(int pin) { MotorPin1_ = pin; }
     void setMotorPin2(int pin) { MotorPin2_ = pin; }
     void setMotorPin3(int pin) { MotorPin3_ = pin; }
@@ -48,7 +50,7 @@ private:
     SignalHandler handler_;
     bool isInited_ = false; // amomic   
     ImagManager imgManager;
-    int rotateTime_ = 5000;
+    int rotateTime_ = 500;
 };
 
 

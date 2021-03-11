@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 #include <thread>
+#include <ctime>
 #include <mutex>
 #include <opencv2/imgcodecs.hpp> 
 #include <opencv2/stitching.hpp>
@@ -16,6 +17,7 @@ using namespace cv;
 class ImagManager {
 public:
     ImagManager();
+    ~ImagManager();
     void capture(int num = 1);
     void stitch();
 private:
@@ -26,7 +28,7 @@ private:
     int idx_ = 0;
     Stitcher::Mode mode_;
     std::mutex mutex_;
-
+    std::thread th;
 };
 
 

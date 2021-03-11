@@ -13,7 +13,7 @@ int main() {
 	//读取视频或摄像头
 	VideoCapture capture;
     capture.open(0);
-    capture.set(cv::CAP_PROP_BUFFERSIZE, 1);
+    // capture.set(cv::CAP_PROP_BUFFERSIZE, 1);
     if (!capture.isOpened()) {
         cerr << "ERROR! Unable to open camera\n";
         return -1;

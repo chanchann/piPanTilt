@@ -11,21 +11,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 
 set(CXX_FLAGS
  -g
- # -DVALGRIND
- -DCHECK_PTHREAD_RETURN_VALUE
- -D_FILE_OFFSET_BITS=64
- -Wall
- -Wextra
- -Werror
-#  -Wconversion
- -Wno-unused-parameter
-#  -Wold-style-cast
- -Woverloaded-virtual
- -Wpointer-arith
- -Wshadow
- -Wwrite-strings
- -march=native
- # -MMD
+ -Wall -pedantic
  -std=c++11
  -rdynamic
  -pthread   # check
@@ -47,7 +33,10 @@ set(CMAKE_CXX_FLAGS_DEBUG "-O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 
 find_package( OpenCV REQUIRED )
+find_package(Boost COMPONENTS system filesystem REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories(${PROJECT_SOURCE_DIR}/3rdParty)
 include_directories(${PROJECT_SOURCE_DIR}/3rdParty/wiringPi)
 include_directories( ${OpenCV_INCLUDE_DIRS}/src)
 

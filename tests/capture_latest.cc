@@ -17,6 +17,10 @@ int main(int argc, char *argv[])
     cv::VideoCapture cap;
     std::mutex mutex;
     cap.open(0);
+        if (!cap.isOpened()) {
+        cerr << "ERROR! Unable to open camera\n";
+        return -1;
+    }
     std::thread product([](cv::Mat& buf, cv::VideoCapture cap1, std::mutex& mtx){
         while (true) { // keep product the new image
             std::lock_guard<std::mutex> lock(mtx);

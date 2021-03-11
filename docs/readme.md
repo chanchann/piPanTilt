@@ -11,3 +11,14 @@ https://www.losant.com/blog/how-to-access-the-raspberry-pi-camera-in-docker
 https://blog.csdn.net/VerTicalVerTical/article/details/110493428
 
 https://chuckmails.medium.com/enable-pi-camera-with-raspberry-pi4-ubuntu-20-10-327208312f6e
+
+## pi4 ubuntu20 换源
+
+```bash 
+echo "deb https://mirrors.ustc.edu.cn/ubuntu-ports/ focal main restricted universe multiverse" > /etc/apt/sources.list
+echo "deb https://mirrors.ustc.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb https://mirrors.ustc.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb https://mirrors.ustc.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list
+```
+
+

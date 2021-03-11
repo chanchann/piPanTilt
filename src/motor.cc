@@ -1,4 +1,5 @@
 #include "motor.h"
+#include <unistd.h>
 
 namespace {
 void sigHandler(int s){
@@ -7,8 +8,6 @@ void sigHandler(int s){
     exit(1); 
 }
 } // namespace 
-
-
 
 void Motor::left() {
     digitalWrite(MotorPin1_, HIGH);
@@ -50,28 +49,72 @@ void Motor::loop() {
     delay(rotateTime_);
     clean();
     imgManager.capture();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     right();
     delay(rotateTime_);
     clean();
     imgManager.capture();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     forward();
     delay(rotateTime_);
     clean();
     imgManager.capture();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     backward();
     delay(rotateTime_);
     clean();
     imgManager.capture();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));    
+    std::cout << "stitch" << std::endl;
     imgManager.stitch();
 }
+
+void Motor::loop1() {
+    left();
+    delay(rotateTime_);
+    forward();
+    delay(rotateTime_);
+    clean();
+    imgManager.capture();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    right();
+    delay(rotateTime_);
+    clean();
+    imgManager.capture();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    backward();
+    delay(rotateTime_);
+    clean();
+    imgManager.capture();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    left();
+    delay(rotateTime_);
+    clean();
+    imgManager.capture();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));    
+    std::cout << "stitch" << std::endl;
+    imgManager.stitch();
+}
+void Motor::round() {
+    int cnt = 0 ;
+    while(cnt < 16) {
+        cnt++;
+        backward();
+        delay(rotateTime_);
+        clean();
+        imgManager.capture();
+        // std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    std::cout << "stitch" << std::endl;
+    imgManager.stitch();
+}
+
 
 Motor& Motor::Instance() {
     static Motor motor;
