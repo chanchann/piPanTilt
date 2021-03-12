@@ -13,8 +13,4 @@ App({
       }
     })
   },
-  globalData: {
-    // postURL: null
-    postURL: "http://192.168.1.30:9001"
-  }
 })
