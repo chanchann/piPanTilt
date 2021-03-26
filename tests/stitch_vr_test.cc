@@ -383,6 +383,12 @@ static int parseCmdArgs(int argc, char** argv)
     {
         compose_megapix = 0.6;
     }
+    std::string base = "/home/littleMickle/opencv/12_sitich/key_frames/frame";
+    for(int i = 0; i < 25; i++) {
+        std::string name = base + std::to_string(i) + ".jpg";
+        img_names.push_back(name);
+    }
+    
     return 0;
 }
 
@@ -426,12 +432,6 @@ int main(int argc, char* argv[])
     {
         finder = AKAZE::create();
     }
-// #ifdef HAVE_OPENCV_XFEATURES2D
-//     else if (features_type == "surf")
-//     {
-//         finder = xfeatures2d::SURF::create();
-//     }
-// #endif
     else if (features_type == "sift")
     {
         finder = SIFT::create();

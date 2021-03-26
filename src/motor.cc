@@ -101,6 +101,33 @@ void Motor::loop1() {
     std::cout << "stitch" << std::endl;
     imgManager.stitch();
 }
+
+void Motor::loopMode() {
+    int cnt = 0 ;
+    while(cnt < 14) {
+        cnt++;
+        left();
+        delay(rotateTime_);
+        clean();
+        imgManager.capture();
+    }
+    forward();
+    delay(rotateTime_*1.25);
+    clean();
+    cnt = 0;
+    while(cnt < 14) {
+        cnt++;
+        right();
+        delay(rotateTime_);
+        clean();
+        imgManager.capture();
+    }
+    std::cout << "stitch" << std::endl;
+    imgManager.stitchVr();
+    backward();
+    delay(rotateTime_*1.25);
+    clean();
+}
 void Motor::round() {
     int cnt = 0 ;
     while(cnt < 16) {
@@ -114,6 +141,8 @@ void Motor::round() {
     std::cout << "stitch" << std::endl;
     imgManager.stitch();
 }
+
+
 
 
 Motor& Motor::Instance() {

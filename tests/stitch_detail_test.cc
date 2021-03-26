@@ -383,6 +383,12 @@ static int parseCmdArgs(int argc, char** argv)
     {
         compose_megapix = 0.6;
     }
+    std::string base = "../tests/key_frames/frame";
+    for(int i = 0; i < 25; i++) {
+        std::string name = base + std::to_string(i) + ".jpg";
+        img_names.push_back(name);
+    }
+    
     return 0;
 }
 

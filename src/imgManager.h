@@ -20,11 +20,13 @@ public:
     ~ImagManager();
     void capture(int num = 1);
     void stitch();
-private:
+    void stitchVr();
+// private:
     // void cleanVedioBuf(cv::VideoCapture *invc);
 private:
     VideoCapture capture_;
     std::vector<Mat> imgs_;
+    std::vector<std::string> imgName_;
     int idx_ = 0;
     Stitcher::Mode mode_;
     std::mutex mutex_;

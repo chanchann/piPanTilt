@@ -23,7 +23,7 @@ int main() {
         } else if(cmd == "B") {
             motor->backward();
         } else if(cmd == "A") {
-            motor->round();
+            motor->loopMode();
         }
         return crow::response{cmd};
     });

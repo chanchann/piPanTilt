@@ -16,7 +16,7 @@
 class Motor {
 public:
     static Motor& Instance();
-    bool init(int MotorPin1 = 26, int MotorPin2 = 19, int MotorPin3 = 13, int MotorPin4 = 6);
+    bool init(int MotorPin1 = 19, int MotorPin2 = 6, int MotorPin3 = 26, int MotorPin4 = 13);
     void left();
     void right();
     void forward();
@@ -25,6 +25,7 @@ public:
     void loop();
     void round();
     void loop1();
+    void loopMode();
     void setMotorPin1(int pin) { MotorPin1_ = pin; }
     void setMotorPin2(int pin) { MotorPin2_ = pin; }
     void setMotorPin3(int pin) { MotorPin3_ = pin; }

@@ -13,10 +13,11 @@ void ImagManager::capture(int num) {
         if(frame.empty()) {
             std::cout << "no data" << std::endl;
         } else {
-            imgs_.emplace_back(frame);
+            // imgs_.emplace_back(frame);
             std::time_t t = std::time(0);
             std::string name = "cap" + std::to_string(cnt++) + "_" + std::to_string(t) + ".jpg";
             imwrite(name, frame); // for test
+            imgName_.push_back(name);
         }
     }
 
@@ -24,7 +25,7 @@ void ImagManager::capture(int num) {
 
 void ImagManager::stitch() {
     Mat pano; 
-    Ptr<Stitcher> stitcher = Stitcher::create(mode_, false); 
+    Ptr<Stitcher> stitcher = Stitcher::create(mode_); 
     Stitcher::Status status = stitcher->stitch(imgs_, pano); 
     if (status != Stitcher::OK) { 
         std::cout << "Can't stitch images\n"; 
@@ -34,6 +35,17 @@ void ImagManager::stitch() {
     imwrite(name, pano); 
     imgs_.clear();
     std::vector<Mat>().swap(imgs_);
+}
+
+void ImagManager::stitchVr() {
+    std::string parseArgs = "./stitch_detail";
+    std::vector<std::string> imgName = {"1.jpg", "2.jpg", "3.jpg"};
+    for(auto img: imgName_) {
+        parseArgs = parseArgs + " " + img;
+    }
+    parseArgs += " --warp spherical";
+    // std::cout << parseArgs << std::endl;;
+    std::system(parseArgs.c_str());
 }
 
 
